@@ -20,19 +20,19 @@ const App = () => {
   },[])//[dependencies.]
   
   const fetchTasks = async  () => {
-    const res = await  fetch('http://localhost:5000/tasks')
+    const res = await  fetch('https://orlijan.github.io/react-task-tracker/')
     const data = await res.json()
     return data
   }
   const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`)
+    const res = await fetch(`https://orlijan.github.io/react-task-tracker/${id}`)
     const data= await res.json()
     return data
   }
 
   //on back end, it creates an id on its own ...means copy
   const addTask = async (task) => {
-    const res = await fetch('http://localhost:5000/tasks', {
+    const res = await fetch('https://orlijan.github.io/react-task-tracker/', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -53,7 +53,7 @@ const App = () => {
   //const delete takes a function (id)  ?==then
   //takes in an id and brings it to task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`,{
+    await fetch(`https://orlijan.github.io/react-task-tracker/${id}`,{
       method: 'DELETE',
     })
     setTasks(tasks.filter((task) => task.id !== id));
@@ -65,7 +65,7 @@ const App = () => {
   const toggleReminder =async (id) => {
     const taskToToggle  = await fetchTask(id)
     const  updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
-    const res = await fetch(`http://localhost:5000/tasks/${id}`,{
+    const res = await fetch(`https://orlijan.github.io/react-task-tracker/${id}`,{
       method: 'PUT',
       headers:{
         'Content-type': 'application/json'
