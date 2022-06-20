@@ -1,22 +1,10 @@
 {
   "tasks": [
     {
-      "text": "1",
-      "day": "",
-      "reminder": false,
+      "text": "poop the bed, \npee pants, \nlove your neighbor",
+      "day": "2022-06-29",
+      "reminder": true,
       "id": 1
-    },
-    {
-      "text": "2",
-      "day": "",
-      "reminder": false,
-      "id": 2
-    },
-    {
-      "text": "4",
-      "day": "",
-      "reminder": false,
-      "id": 3
     }
   ]
 }

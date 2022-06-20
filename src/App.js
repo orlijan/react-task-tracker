@@ -17,7 +17,7 @@ const App = () => {
 
     getTasks()
  
-  },[])//[dependencies.]
+  },[])
   
   const fetchTasks = async  () => {
     const res = await  fetch('http://localhost:5000/tasks')
@@ -25,7 +25,7 @@ const App = () => {
     return data
   }
   const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks${id}`)
+    const res = await fetch(`http://localhost:5000/tasks/${id}`)
     const data= await res.json()
     return data
   }
@@ -53,7 +53,7 @@ const App = () => {
   //const delete takes a function (id)  ?==then
   //takes in an id and brings it to task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks${id}`,{
+    await fetch(`http://localhost:5000/tasks/${id}`,{
       method: 'DELETE',
     })
     setTasks(tasks.filter((task) => task.id !== id));
@@ -65,11 +65,12 @@ const App = () => {
   const toggleReminder =async (id) => {
     const taskToToggle  = await fetchTask(id)
     const  updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
-    const res = await fetch(`http://localhost:5000/tasks${id}`,{
+    const res = await fetch(`http://localhost:5000/tasks/${id}`,{
       method: 'PUT',
       headers:{
         'Content-type': 'application/json'
       },
+      
       body:JSON.stringify(updTask)
     })
     const data = await res.json()
@@ -82,7 +83,7 @@ const App = () => {
   };
   return (
     <Router>
-    <div className="container "><style>{"body { background-color: #faf6f0; }"}</style>
+    <div className="container  "><style>{"body { background-color: #faf6f0; }"}</style>
       <Header onAdd={()=>setShowAddTask(!showAddTask)}showAdd={showAddTask} title={"Task Tracker"} />
       <Routes>
       <Route path ='/' element={

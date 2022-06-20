@@ -22,7 +22,7 @@ const AddTask = ({onAdd}) => {
   }
   return (
     <form className="add-form" onSubmit={onSubmit}>
-      <div className="form-control">
+      {/* <div className="form-control">
         <label>Task</label>
         <input
           type="text"
@@ -30,6 +30,20 @@ const AddTask = ({onAdd}) => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
+      </div> */}
+      <div className="form-control">
+        <label>Task</label>
+        <textarea className="" type="text" 
+        placeholder="Add Task"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        ></textarea>
+        {/* <input
+          type="text"
+          placeholder="Add Task"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        /> */}
       </div>
       <div className="form-control">
         <label>Day and time</label>

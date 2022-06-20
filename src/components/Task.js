@@ -8,7 +8,7 @@ const Task = ({ task, onDelete, onToggle }) => {
       className={`task ${task.reminder && 'reminder'}`}
       onDoubleClick={() => onToggle(task.id)}//calls function and then passed in ontoggle as a prop
     >
-      <h3 className="noselect">
+      <h3 className="noselect display-linebreak">
         {task.text}{' '}
         <div>
         <FaEdit onClick={()=> console.log("pop up of a text box that changes the data withing the text.")} />
