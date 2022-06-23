@@ -7,82 +7,104 @@ import AddTask from "./components/AddTask";
 import About from "./components/About";
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(false)
-  const [tasks, setTasks] = useState([])
-  
-  useEffect(() => {
-    const getTasks = async() => {
-      const tasksFromServer = await fetchTasks()
-      setTasks(tasksFromServer)
+  const [tasks, setTasks] = useState([
+    {
+      "text": "Walk the dog",
+      "day": "6/23/2022",
+      "reminder": false,
+      "id": 1
+    },
+    {
+      "text": "Dinner with friends",
+      "day": "6/25/2022",
+      "reminder": false,
+      "id": 2
+    },
+    {
+      "text": "Party",
+      "day": "6/28/2022",
+      "reminder": false,
+      "id": 3
     }
-
-    getTasks()
- 
-  },[])//[dependencies.]
+  ])
   
-  const fetchTasks = async  () => {
-    const res = await  fetch('https://my-json-server.typicode.com/orlijan/react-task-tracker/db')
-    const data = await res.json()
-    return data
-  }
-  const fetchTask = async (id) => {
-    const res = await fetch(`https://my-json-server.typicode.com/orlijan/react-task-tracker/db${id}`)
-    const data= await res.json()
-    return data
-  }
+  // useEffect(() => {
+  //   const getTasks = async() => {
+  //     const tasksFromServer = await fetchTasks()
+  //     setTasks(tasksFromServer)
+  //   }
+
+  //   getTasks()
+ 
+  // },[])
+  
+  // const fetchTasks = async  () => {
+  //   const res = await  fetch('http://localhost:5000/tasks')
+  //   const data = await res.json()
+  //   return data
+  // }
+  // const fetchTask = async (id) => {
+  //   const res = await fetch(`http://localhost:5000/tasks/${id}`)
+  //   const data= await res.json()
+  //   console.log(data)
+  //   return data
+  // }
 
   //on back end, it creates an id on its own ...means copy
-  const addTask = async (task) => {
-    const res = await fetch('https://my-json-server.typicode.com/orlijan/react-task-tracker/db', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(task)
-    })
-    //data returned is the new task added
-    const data =await res.json()
+  const addTask =  (task) => {
+    // const res = await fetch('http://localhost:5000/tasks', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-type': 'application/json'
+    //   },
+    //   body: JSON.stringify(task)
+    // })
+    // //data returned is the new task added
+    // const data =await res.json()
     
-    setTasks([...tasks, data])
+    // setTasks([...tasks, data])
 
-    // const id = Math.floor(Math.random()*1000)+1
-    // const newTask={id, ...task }
-    // setTasks([...tasks, newTask])
+    const id = Math.floor(Math.random()*1000)+1
+    const newTask={id, ...task }
+    setTasks([...tasks, newTask])
   };
 
   //delete task
   //const delete takes a function (id)  ?==then
   //takes in an id and brings it to task
-  const deleteTask = async (id) => {
-    await fetch(`https://my-json-server.typicode.com/orlijan/react-task-tracker/db${id}`,{
-      method: 'DELETE',
-    })
+  // 
+  const deleteTask = (id) => {
+    // await fetch(`http://localhost:5000/tasks/${id}`,{
+    //   method: 'DELETE',
+    // })
     setTasks(tasks.filter((task) => task.id !== id));
   };//.filter is a high order array method. doesnt show the task with the id.
 
   //toggle reminder
   //... == copy
   // sets tasks, maps through the task.id. if its equal to the id passed in. change reminder.
-  const toggleReminder =async (id) => {
-    const taskToToggle  = await fetchTask(id)
-    const  updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
-    const res = await fetch(`https://my-json-server.typicode.com/orlijan/react-task-tracker/db${id}`,{
-      method: 'PUT',
-      headers:{
-        'Content-type': 'application/json'
-      },
-      body:JSON.stringify(updTask)
-    })
-    const data = await res.json()
+  const toggleReminder =(id) => {
+    // const taskToToggle  =  fetchTask(id)
+    // const  updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
+    // const res = await fetch(`http://localhost:5000/tasks/${id}`,{
+    //   method: 'PUT',
+    //   headers:{
+    //     'Content-type': 'application/json'
+    //   },
+      
+    //   body:JSON.stringify(updTask)
+    // })
+    // const data = await res.json()
 
     setTasks(
       tasks.map((task) =>
-        task.id === id ? { ...task, reminder: data.reminder } : task
+        task.id === id ? { ...task, reminder: !task.reminder } : task
       )
     );
   };
   return (
     <Router>
-    <div className="container "><style>{"body { background-color: #faf6f0; }"}</style>
+    <div className="container  "><style>{"body { background-color: #faf6f0; }"}</style>
       <Header onAdd={()=>setShowAddTask(!showAddTask)}showAdd={showAddTask} title={"Task Tracker"} />
       <Routes>
       <Route path ='/' element={

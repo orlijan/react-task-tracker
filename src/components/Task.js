@@ -8,9 +8,11 @@ const Task = ({ task, onDelete, onToggle }) => {
       className={`task ${task.reminder && 'reminder'}`}
       onDoubleClick={() => onToggle(task.id)}//calls function and then passed in ontoggle as a prop
     >
-      <h3 className="noselect">
+      <p className="noselect  text-xs text-gray-400">{task.day}</p>
+      <h3 className="noselect display-linebreak">
         {task.text}{' '}
-        <div>
+        
+        <div className="flex">
         <FaEdit onClick={()=> console.log("pop up of a text box that changes the data withing the text.")} />
         <FaTimes
           style={{ color: "red", cursor: "pointer" }}
@@ -18,7 +20,7 @@ const Task = ({ task, onDelete, onToggle }) => {
           //this changes it from taking every parameter to just task.id
         /></div>
       </h3>
-      <p className="noselect">{task.day}</p>
+
     </div> //onDelete={deleteTask} passes in everything. changing it to onclick
   );
 };
