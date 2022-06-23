@@ -3,12 +3,12 @@
     {
       "text": "change tasks",
       "day": "",
-      "reminder": true,
+      "reminder": false,
       "id": 2
     },
     {
-      "text": "sdf",
-      "day": "2022-06-03",
+      "text": "dasf",
+      "day": "",
       "reminder": false,
       "id": 3
     }
