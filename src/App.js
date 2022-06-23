@@ -107,7 +107,7 @@ const App = () => {
     <div className="container  "><style>{"body { background-color: #faf6f0; }"}</style>
       <Header onAdd={()=>setShowAddTask(!showAddTask)}showAdd={showAddTask} title={"Task Tracker"} />
       <Routes>
-      <Route path ='/' element={
+      <Route path ='react-task-tracker/' element={
       <>
        {showAddTask && <AddTask onAdd={addTask}/>}
       {/* if task.length is greater than 0 ? (then) show tasks. :(or else) ("no tasks") */}
@@ -119,7 +119,7 @@ const App = () => {
       </>}
       />
 
-      <Route path='/about' element={<About />} />
+      <Route path='react-task-tracker/about' element={<About />} />
       </Routes>
       <Footer />
     </div>
