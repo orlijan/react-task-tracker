@@ -3,7 +3,7 @@ import Button from "./Button";
 import { useLocation } from "react-router-dom";
 const Header = ({ title, onAdd,showAdd }) => {
   const location = useLocation()
-  
+  //current url works in github pages. will not work locally. get rid of the / for it to work.
 
   return (
     <header className="header">
@@ -22,11 +22,4 @@ Header.defaultProps = {
 Header.propTypes = {
   title: PropTypes.string.isRequired,
 };
-
-//        <h1 style={headingStyle}>{title}</h1> calls this in
-// css in js
-// const headingStyle = {
-//     color: 'red',
-//     backgroundColor: 'black'
-// }
 export default Header;
