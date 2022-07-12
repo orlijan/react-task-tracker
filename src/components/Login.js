@@ -46,12 +46,12 @@ const handleSubmit = (event) => {
 const renderForm=(
     <form onSubmit={handleSubmit} className='<add-form'>
         <div className='form-control'>
-            <label>Log in</label>
+            <label>Log in the username is user1</label>
             <input type='text' name='uname' required></input>
             {renderErrorMessage("uname")}
         </div>
         <div className='form-control'>
-            <label>Password</label>
+            <label>Password the password is pass1</label>
             <input type='password' name='pass' required></input>
             {renderErrorMessage("pass")}
         </div>
